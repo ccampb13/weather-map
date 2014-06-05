@@ -24,7 +24,7 @@
   function searchMap(zip){
     let geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({address: location},(results, status)=>{  // ()=> creates an anonymous function with results and status being the paramaters
+    geocoder.geocode({address:zip},(results, status)=>{  // ()=> creates an anonymous function with results and status being the paramaters
       let name = results[0].formatted_address;
       let lat = results[0].geometry.location.lat();
       let lng = results[0].geometry.location.lng();
@@ -34,7 +34,7 @@
 
   function addMarker(lat, lng, name, icon){
     let latLng = new google.maps.LatLng(lat, lng);
-    new google.maps.Marker({map: map, position: latLng, title:name, icon: icon}); //icon adds the flag
+    new google.maps.Marker({map: map, position: latLng, title:name, icon:icon}); //icon adds the flag
   }
 
 
@@ -55,7 +55,6 @@
   }
    function initGraph(zip){
     let graph = $(`.graph[data-zip=${zip}]`)[0];
-    console.log(graph);
     charts[zip] = AmCharts.makeChart(graph, {
     'type': 'serial',
     'theme': 'none',
